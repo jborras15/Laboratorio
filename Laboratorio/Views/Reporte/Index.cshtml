@@ -1,0 +1,43 @@
+@model IEnumerable<Laboratorio.Controllers.Reporte>
+
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+<h1>Reportes</h1>
+
+
+<a asp-controller="Reportes" asp-action="Crear" class="btn btn-primary mb-3">Crear</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Fecha</th>
+        <th>Operador</th>
+        <th>Reporte</th>
+        <th>Turno</th>
+    </tr>
+    </thead>
+    <tbody id="reOrdenable">
+    @foreach (var reportes in Model)
+    {
+        <tr>
+            <td>
+                <!--para resivir los id de los tipos de cuentas -->
+                <input type="hidden" value="@reportes.Id" class="ids">
+                @* <a class="btn  btn-primary" asp-action="Editar" asp-route-id="@tipoCuentas.Id">Editar</a> *@
+                @* <a class="btn btn-danger" asp-action="Borrar" asp-route-id="@tipoCuentas.Id">Borrar</a> *@
+                @reportes.Fecha
+            </td>
+            <td>
+                @reportes.Usuario
+            </td>
+            <td>
+                @reportes.Descripcion
+            </td>
+            <td>
+                @reportes.Turnos
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
